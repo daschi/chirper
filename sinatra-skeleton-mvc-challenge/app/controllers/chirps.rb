@@ -3,12 +3,15 @@ post '/chirps' do
   redirect "/users/#{@chirp.user_id}"
 end
 
-get '/chirps/:id/edit' do
-
-  erb :'chirps/edit'
+post '/chirps/:id/edit' do
+  if request.xhr?
+      @chirp = Chirp.find_by(id: params[:id])
+      @chirp.update_attributes(content: params[:content])
+      status 200
+  else
+    @chirp = Chirp.find_by(id: params[:id])
+    @chirp.update_attributes(content: params[:content])
+    redirect "/users/#{session[:id]}"
+  end
 end
 
-put '/chirps/:id' do
-
-
-end
