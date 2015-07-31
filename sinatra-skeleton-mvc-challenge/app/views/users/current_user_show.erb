@@ -12,7 +12,7 @@
   <% if @chirps %>
     <% @chirps.each do |chirp| %>
       <div class="chirp">
-          <h4> <%= chirp.user.handle %> <%= chirp.user.handle %> </h4>
+          <h4> <%= chirp.user.firstname %> <%= chirp.user.handle %> </h4>
       <p><%= chirp.content %></p>
       </div>
     <% end %>

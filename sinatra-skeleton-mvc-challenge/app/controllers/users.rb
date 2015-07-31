@@ -17,9 +17,18 @@ post '/users' do
 end
 
 get '/users/:id' do
-  # @user = current_user
+
   @chirps = Chirp.where(user_id: session[:user_id])
-  erb :'users/show'
+  @user = User.find_by(id: params[:id])
+  if @user == current_user
+     p @user
+     p current_user
+    erb :'users/current_user_show'
+  else
+    # p 'Stalking'
+    erb :'users/stalker_user_show'
+  end
+
 end
 
 
@@ -27,11 +36,17 @@ end
     erb :"sessions/new"
  end
 
+ get '/logout' do
+  session.clear
+  # p"Succesfull logout"
+  erb :index
+ end
+
 post '/sessions' do
-  user = User.find_by(handle: params[:handle])
-  if user
-    login(user)
-    redirect "users/#{user.id}"
+  @user = User.find_by(handle: params[:handle])
+    if @user.password == params[:password_hash]
+      login(@user)
+      redirect "users/#{@user.id}"
   else
     erb :'/sessions/new'
   end
