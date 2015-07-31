@@ -1,5 +1,20 @@
 class User < ActiveRecord::Base
   has_many :chirps
+  # has_many :stalkers, class_name: "User", foreign_key: "stalker_id", through: :relations
+  # has_many :victims, class_name: "User", foreign_key: "victim_id", through: :relations
+
+  has_and_belongs_to_many :stalkers,
+    class_name: "User",
+    foreign_key: "stalker_id",
+    join_table: "relations"
+
+    has_and_belongs_to_many :victims,
+    class_name: "User",
+    foreign_key: "victim_id",
+    join_table: "relations"
+
+
+
 
   validates :password, presence: true
   include BCrypt
