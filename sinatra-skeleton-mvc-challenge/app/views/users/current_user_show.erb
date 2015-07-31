@@ -11,6 +11,10 @@
           <div class="chirp">
               <h4> <%= chirp.user.firstname %> <%= chirp.user.handle %> </h4>
             <p contenteditable="true" id="<%= chirp.id %>" ><%= chirp.content %></p>
+            <form action="/chirps/<%= chirp.id %>/delete" method="post">
+            <input type="hidden" name="_method" value="delete">
+              <input type="submit" value="X">
+            </form>
           </div>
     <% end %> <!-- end do -->
   <% else %>

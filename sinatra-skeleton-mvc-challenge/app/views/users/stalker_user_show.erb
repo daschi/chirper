@@ -5,9 +5,6 @@
         <div class="chirp">
           <h4> <%= chirp.user.firstname %> <%= chirp.user.handle %> </h4>
           <p><%= chirp.content %></p>
-          <form action="/chirps/<%= chirp.id %>/edit" method="GET">
-              <input type="submit" value="Edit">
-          </form>
           </div>
         <% end %>
   <% else %>

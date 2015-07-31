@@ -11,7 +11,12 @@ post '/chirps/:id/edit' do
   else
     @chirp = Chirp.find_by(id: params[:id])
     @chirp.update_attributes(content: params[:content])
-    redirect "/users/#{session[:id]}"
+    redirect "/users/#{session[:user_id]}"
   end
 end
 
+delete "/chirps/:id/delete" do
+  @chirp = Chirp.find_by(id: params[:id])
+  Chirp.destroy(@chirp)
+  redirect "/users/#{session[:user_id]}"
+end
