@@ -1,5 +1,7 @@
 class User < ActiveRecord::Base
   has_many :chirps
+
+  validates :password, presence: true
   include BCrypt
 
   def password
