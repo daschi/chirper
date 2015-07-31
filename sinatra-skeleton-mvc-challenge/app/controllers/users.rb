@@ -17,6 +17,8 @@ post '/users' do
 end
 
 get '/users/:id' do
+
+  @chirps = Chirp.where(user_id: session[:user_id])
   @user = User.find_by(id: params[:id])
   if @user == current_user
      p @user
@@ -26,6 +28,7 @@ get '/users/:id' do
     # p 'Stalking'
     erb :'users/stalker_user_show'
   end
+
 end
 
 

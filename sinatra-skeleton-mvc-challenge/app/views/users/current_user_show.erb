@@ -1,5 +1,22 @@
 <h2> Welcome to your profile, <%= current_user.firstname %> </h2>
 
-<form action="/logout" method="get">
-  <input type="submit" value="Logout"></input>
+<!-- <h3> Make a chirp: </h3> -->
+<form action="/chirps" method="post" class="new-chirp">
+  <label for="content">Make a chirp:</label>
+  <textarea name="content" maxlength="140" placeholder="chirp chirp chirp"></textarea>
+  <input type="submit" value="Post">
 </form>
+
+
+<div class="chirp-container">
+  <% if @chirps %>
+    <% @chirps.each do |chirp| %>
+      <div class="chirp">
+          <h4> <%= chirp.user.firstname %> <%= chirp.user.handle %> </h4>
+      <p><%= chirp.content %></p>
+      </div>
+    <% end %>
+  <% else %>
+    <h5> no chirps </h5>
+  <% end %>
+</div>
