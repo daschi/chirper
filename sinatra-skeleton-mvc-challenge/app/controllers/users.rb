@@ -18,6 +18,7 @@ end
 
 get '/users/:id' do
   # @user = current_user
+  @chirps = Chirp.where(user_id: session[:user_id])
   erb :'users/show'
 end
 
