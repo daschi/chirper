@@ -1,5 +1,3 @@
-<h2> Welcome to your profile, <%= current_user.firstname %> </h2>
-
 <!-- <h3> Make a chirp: </h3> -->
 <form action="/chirps" method="post" class="new-chirp">
   <label for="content">Make a chirp:</label>
@@ -7,16 +5,15 @@
   <input type="submit" value="Post">
 </form>
 
-
 <div class="chirp-container">
   <% if @chirps %>
-    <% @chirps.each do |chirp| %>
-      <div class="chirp">
-          <h4> <%= chirp.user.handle %> <%= chirp.user.handle %> </h4>
-      <p><%= chirp.content %></p>
-      </div>
-    <% end %>
+    <% @chirps.reverse.each do |chirp| %>
+          <div class="chirp">
+              <h4> <%= chirp.user.firstname %> <%= chirp.user.handle %> </h4>
+            <p contenteditable="true" id="<%= chirp.id %>" ><%= chirp.content %></p>
+          </div>
+    <% end %> <!-- end do -->
   <% else %>
     <h5> no chirps </h5>
-  <% end %>
+  <% end %> <!-- end outer if/else -->
 </div>

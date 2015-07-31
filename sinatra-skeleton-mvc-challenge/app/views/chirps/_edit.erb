@@ -1,0 +1,8 @@
+<div class="chirp" >
+  <form action="/chirps/<%= chirp.id %>" method="POST">
+    <input type="hidden" name="_method" value="put">
+     <h4> <%= chirp.user.firstname %> <%= chirp.user.handle %> </h4>
+    <textarea name="content" maxlength="140"><%= chirp.content %></textarea>
+    <input type="submit" value="Edit!!!">
+  </form>
+</div>

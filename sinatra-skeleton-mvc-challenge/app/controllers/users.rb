@@ -17,9 +17,9 @@ post '/users' do
 end
 
 get '/users/:id' do
-  # @user = current_user
+  @user = User.find_by(id: params[:id])
   @chirps = Chirp.where(user_id: session[:user_id])
-  erb :'users/show'
+  erb :'users/current_user_show'
 end
 
 

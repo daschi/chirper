@@ -1,0 +1,15 @@
+<div class="chirp-container">
+  <% if @chirps %>
+    <% @chirps.reverse.each do |chirp| %>
+        <div class="chirp">
+          <h4> <%= chirp.user.firstname %> <%= chirp.user.handle %> </h4>
+          <p><%= chirp.content %></p>
+          <form action="/chirps/<%= chirp.id %>/edit" method="GET">
+              <input type="submit" value="Edit">
+          </form>
+          </div>
+        <% end %>
+  <% else %>
+    <h5> no chirps </h5>
+  <% end %> <!-- end outer if/else -->
+</div>
