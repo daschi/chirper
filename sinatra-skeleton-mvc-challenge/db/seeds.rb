@@ -8,6 +8,7 @@ user_1.chirps << Chirp.create(content: "I'm a chirp 1")
 user_2.chirps << Chirp.create(content: "I'm a chirp 2")
 user_3.chirps << Chirp.create(content: "I'm a chirp 3")
 
+
 Relation.create(stalker_id: 1, victim_id:2)
 Relation.create(stalker_id: 2, victim_id:1)
 Relation.create(stalker_id: 1, victim_id:3)
